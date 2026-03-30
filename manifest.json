@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "X箇条書き文字数チェッカー",
+  "version": "1.0.0",
+  "description": "選択したテキストの各行を文字数で色分けハイライト（15文字以内=青、16-17=黄、18以上=赤）",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

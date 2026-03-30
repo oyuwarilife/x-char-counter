@@ -1,0 +1,101 @@
+/* X箇条書き文字数チェッカー - Styles（かわいい女性向けバージョン） */
+
+/* ハイライト（オーバーレイ方式） */
+.xcc-highlight-overlay {
+  border-radius: 4px;
+  transition: opacity 0.2s ease;
+  opacity: 0.4;
+}
+
+.xcc-highlight-overlay.xcc-blue {
+  background: linear-gradient(135deg, rgba(173, 216, 230, 0.7), rgba(176, 224, 230, 0.6));
+}
+
+.xcc-highlight-overlay.xcc-yellow {
+  background: linear-gradient(135deg, rgba(255, 218, 185, 0.7), rgba(255, 228, 196, 0.6));
+}
+
+.xcc-highlight-overlay.xcc-red {
+  background: linear-gradient(135deg, rgba(255, 192, 203, 0.7), rgba(255, 182, 193, 0.6));
+}
+
+/* 文字数バッジ（各行の右横） */
+.xcc-char-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-family: 'Comic Sans MS', 'Hiragino Maru Gothic Pro', 'Meiryo', 'Rounded Mplus 1c', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  animation: xcc-badge-fadein 0.2s ease;
+}
+
+@keyframes xcc-badge-fadein {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.xcc-char-badge.xcc-blue {
+  background: linear-gradient(135deg, #add8e6, #b0e0e6);
+  color: #2c5f7a;
+  border: 2px solid #87ceeb;
+}
+
+.xcc-char-badge.xcc-yellow {
+  background: linear-gradient(135deg, #ffdab9, #ffe4c4);
+  color: #8b5a00;
+  border: 2px solid #ffb84d;
+}
+
+.xcc-char-badge.xcc-red {
+  background: linear-gradient(135deg, #ffc0cb, #ffb6c1);
+  color: #8b3a62;
+  border: 2px solid #ff69b4;
+}
+
+/* ツールチップ */
+.xcc-tooltip {
+  position: absolute;
+  z-index: 999999;
+  background: linear-gradient(145deg, #ffffff, #fef9f3);
+  border: 2px solid #ffd4e5;
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 8px 24px rgba(255, 182, 193, 0.25),
+              0 4px 8px rgba(0, 0, 0, 0.05);
+  font-family: 'Comic Sans MS', 'Hiragino Maru Gothic Pro', 'Meiryo', 'Rounded Mplus 1c', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  min-width: 160px;
+  pointer-events: none;
+  animation: xcc-tooltip-fadein 0.2s ease;
+}
+
+@keyframes xcc-tooltip-fadein {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.xcc-tooltip .xcc-total {
+  font-weight: 700;
+  color: #ff6b9d;
+  font-size: 16px;
+  background: linear-gradient(90deg, #ff6b9d, #ffa8c5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
