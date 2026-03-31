@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X箇条書き文字数チェッカー - ブックマークレット</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', 'Hiragino Maru Gothic Pro', 'Meiryo', sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: linear-gradient(145deg, #fff5f8, #f0f9ff);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(255, 182, 193, 0.3);
+    }
+    h1 {
+      color: #ff6b9d;
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+    .install-section {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      border: 2px solid #ffd4e5;
+      margin-bottom: 30px;
+    }
+    .bookmarklet-link {
+      display: inline-block;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #ff6b9d, #ffa8c5);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
+      transition: transform 0.2s;
+    }
+    .bookmarklet-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 107, 157, 0.4);
+    }
+    .steps {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      border: 2px solid #ffd4e5;
+      margin-bottom: 30px;
+    }
+    .step {
+      margin: 20px 0;
+      padding-left: 40px;
+      position: relative;
+    }
+    .step::before {
+      content: attr(data-step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(135deg, #add8e6, #b0e0e6);
+      color: #2c5f7a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .features {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      border: 2px solid #ffd4e5;
+    }
+    .feature-item {
+      margin: 15px 0;
+      padding-left: 30px;
+      position: relative;
+    }
+    .feature-item::before {
+      content: '✨';
+      position: absolute;
+      left: 0;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #999;
+      font-size: 14px;
+    }
+    a {
+      color: #ff6b9d;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>📝 X箇条書き文字数チェッカー</h1>
+  <p class="subtitle">ブックマークレット版 - インストール不要！</p>
+
+  <div class="install-section">
+    <h2 style="color: #ff6b9d; margin-top: 0;">📌 インストール</h2>
+    <p style="margin-bottom: 20px;">このリンクをブックマークバーにドラッグ＆ドロップしてください：</p>
+    <p style="text-align: center;">
+      <a href="javascript:(function(){if(window.xccBookmarklet){alert('既に起動しています！テキストを選択してください。');return}window.xccBookmarklet=true;const style=document.createElement('style');style.textContent='.xcc-highlight-overlay{position:absolute;border-radius:4px;opacity:0.4;pointer-events:none;z-index:9999;transition:opacity 0.2s}.xcc-highlight-overlay.xcc-blue{background:linear-gradient(135deg,rgba(173,216,230,0.7),rgba(176,224,230,0.6))}.xcc-highlight-overlay.xcc-yellow{background:linear-gradient(135deg,rgba(255,218,185,0.7),rgba(255,228,196,0.6))}.xcc-highlight-overlay.xcc-red{background:linear-gradient(135deg,rgba(255,192,203,0.7),rgba(255,182,193,0.6))}.xcc-char-badge{position:absolute;padding:4px 10px;border-radius:12px;font-family:Comic Sans MS,Hiragino Maru Gothic Pro,Meiryo,sans-serif;font-size:12px;font-weight:700;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.15);pointer-events:none;z-index:10000;animation:xcc-badge-fadein 0.2s}@keyframes xcc-badge-fadein{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}.xcc-char-badge.xcc-blue{background:linear-gradient(135deg,#add8e6,#b0e0e6);color:#2c5f7a;border:2px solid #87ceeb}.xcc-char-badge.xcc-yellow{background:linear-gradient(135deg,#ffdab9,#ffe4c4);color:#8b5a00;border:2px solid #ffb84d}.xcc-char-badge.xcc-red{background:linear-gradient(135deg,#ffc0cb,#ffb6c1);color:#8b3a62;border:2px solid #ff69b4}.xcc-tooltip{position:absolute;z-index:999999;background:linear-gradient(145deg,#fff,#fef9f3);border:2px solid #ffd4e5;border-radius:16px;padding:16px 18px;box-shadow:0 8px 24px rgba(255,182,193,0.25),0 4px 8px rgba(0,0,0,0.05);font-family:Comic Sans MS,Hiragino Maru Gothic Pro,Meiryo,sans-serif;font-size:14px;line-height:1.8;min-width:160px;pointer-events:none;animation:xcc-tooltip-fadein 0.2s}@keyframes xcc-tooltip-fadein{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}.xcc-tooltip .xcc-total{font-weight:700;color:#ff6b9d;font-size:16px;background:linear-gradient(90deg,#ff6b9d,#ffa8c5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center}';document.head.appendChild(style);let currentTooltip=null;let highlightedElements=[];function countChars(text){let count=0;for(let char of text){count+=char.match(/[\u0000-\u007F]/)?0.5:1}return Math.ceil(count)}function getColorClass(charCount){if(charCount<=15)return 'xcc-blue';if(charCount<=17)return 'xcc-yellow';return 'xcc-red'}function clearHighlights(){highlightedElements.forEach(el=>{if(el&&el.parentNode){el.remove()}});highlightedElements=[];if(currentTooltip){currentTooltip.remove();currentTooltip=null}}function handleSelection(){const selection=window.getSelection();const selectedText=selection.toString();if(!selectedText||selectedText.trim()===''){clearHighlights();return}clearHighlights();const lines=selectedText.split('\\n').filter(line=>line.trim()!=='');if(lines.length===0)return;const lineStats=lines.map(line=>{const count=countChars(line.trim());const color=getColorClass(count);return{text:line,count,color}});const totalChars=countChars(selectedText);const lastBadgeRect=applyHighlight(selection,lineStats);createTooltip(lineStats,totalChars,selection,lastBadgeRect)}function applyHighlight(selection,lineStats){if(!selection.rangeCount)return null;const range=selection.getRangeAt(0);const rects=range.getClientRects();if(rects.length===0)return null;const lineRects=[];let currentY=null;let currentLineGroup=[];Array.from(rects).forEach(rect=>{if(rect.width===0||rect.height===0)return;const y=Math.round(rect.top);if(currentY===null||Math.abs(y-currentY)<5){currentLineGroup.push(rect);currentY=y}else{if(currentLineGroup.length>0){lineRects.push(currentLineGroup)}currentLineGroup=[rect];currentY=y}});if(currentLineGroup.length>0){lineRects.push(currentLineGroup)}let lastBadgeRect=null;lineRects.forEach((rects,index)=>{const lineIndex=Math.min(index,lineStats.length-1);const color=lineStats[lineIndex].color;const charCount=lineStats[lineIndex].count;const lastRect=rects[rects.length-1];rects.forEach(rect=>{const highlight=document.createElement('div');highlight.className=`xcc-highlight-overlay ${color}`;highlight.style.position='absolute';highlight.style.left=`${rect.left+window.scrollX}px`;highlight.style.top=`${rect.top+window.scrollY}px`;highlight.style.width=`${rect.width}px`;highlight.style.height=`${rect.height}px`;document.body.appendChild(highlight);highlightedElements.push(highlight)});const badge=document.createElement('div');badge.className=`xcc-char-badge ${color}`;badge.textContent=`${charCount}文字`;badge.style.position='absolute';badge.style.left=`${lastRect.right+window.scrollX+8}px`;badge.style.top=`${lastRect.top+window.scrollY}px`;document.body.appendChild(badge);highlightedElements.push(badge);lastBadgeRect={left:lastRect.right+window.scrollX+8,top:lastRect.top+window.scrollY,bottom:lastRect.bottom+window.scrollY,height:lastRect.height}});return lastBadgeRect}function createTooltip(lineStats,totalChars,selection,lastBadgeRect){const tooltip=document.createElement('div');tooltip.className='xcc-tooltip';tooltip.innerHTML=`<div class=\"xcc-total\">合計: ${totalChars}文字 / 140</div>`;document.body.appendChild(tooltip);currentTooltip=tooltip;if(lastBadgeRect){tooltip.style.left=`${lastBadgeRect.left}px`;tooltip.style.top=`${lastBadgeRect.bottom+8}px`}else{const range=selection.getRangeAt(0);const rect=range.getBoundingClientRect();tooltip.style.left=`${rect.right+window.scrollX+10}px`;tooltip.style.top=`${rect.top+window.scrollY}px`}}document.addEventListener('mouseup',()=>{setTimeout(handleSelection,10)});document.addEventListener('mousedown',(e)=>{if(currentTooltip&&!currentTooltip.contains(e.target)){clearHighlights()}});document.addEventListener('keydown',(e)=>{if(e.key==='Escape'){clearHighlights()}});alert('X箇条書き文字数チェッカーを起動しました！\\nテキストを選択してください。')})();" class="bookmarklet-link">📝 文字数チェッカー</a>
+    </p>
+    <p style="margin-top: 20px; color: #666; font-size: 14px;">
+      ※ スマホの場合：リンクを長押し → 「ブックマークに追加」
+    </p>
+  </div>
+
+  <div class="steps">
+    <h2 style="color: #ff6b9d; margin-top: 0;">📖 使い方</h2>
+    <div class="step" data-step="1">
+      <strong>ブックマークレットをクリック</strong><br>
+      ブックマークバーの「📝 文字数チェッカー」をクリック
+    </div>
+    <div class="step" data-step="2">
+      <strong>テキストを選択</strong><br>
+      任意のWebページでテキストをマウスドラッグして選択
+    </div>
+    <div class="step" data-step="3">
+      <strong>自動で表示される</strong><br>
+      各行の文字数バッジ + 合計文字数が表示されます
+    </div>
+    <div class="step" data-step="4">
+      <strong>解除</strong><br>
+      Escキーまたは別の場所をクリックで解除
+    </div>
+  </div>
+
+  <div class="features">
+    <h2 style="color: #ff6b9d; margin-top: 0;">✨ 機能</h2>
+    <div class="feature-item">
+      <strong>行ごとに文字数表示</strong> - 各行の右横にかわいいバッジ
+    </div>
+    <div class="feature-item">
+      <strong>色分けハイライト</strong> - 15文字以内=水色、16-17=ピーチ、18以上=ピンク
+    </div>
+    <div class="feature-item">
+      <strong>合計文字数</strong> - 選択範囲全体の文字数を「○○文字 / 140」で表示
+    </div>
+    <div class="feature-item">
+      <strong>半角0.5文字計算</strong> - 全角1文字、半角0.5文字で正確にカウント
+    </div>
+    <div class="feature-item">
+      <strong>すべてのブラウザ対応</strong> - Chrome、Firefox、Safari、Edge
+    </div>
+    <div class="feature-item">
+      <strong>インストール不要</strong> - ブックマークするだけ
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>
+      <a href="https://github.com/oyuwarilife/x-char-counter" target="_blank">GitHub</a> |
+      Chrome拡張機能版も公開予定
+    </p>
+    <p>Made with 💕 by oyuwari | MIT License</p>
+  </div>
+</body>
+</html>
