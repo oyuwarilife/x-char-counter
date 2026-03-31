@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>X箇条書き文字数チェッカー - ブックマークレット（スタンドアロン版）</title>
+  <title>Xの横幅チェックくん - ブックマークレット</title>
   <style>
     body {
       font-family: 'Comic Sans MS', 'Hiragino Maru Gothic Pro', 'Meiryo', sans-serif;
@@ -90,19 +90,19 @@
   </style>
 </head>
 <body>
-  <h1>📝 X箇条書き文字数チェッカー</h1>
-  <p class="subtitle">ブックマークレット版（スタンドアロン）</p>
+  <h1>📏 Xの横幅チェックくん</h1>
+  <p class="subtitle">各行の文字数を色分けチェック！</p>
 
   <div class="install-section">
     <h2 style="color: #ff6b9d; margin-top: 0;">📌 インストール</h2>
     <p style="margin-bottom: 20px;"><strong>このボタンをブックマークバーにドラッグ＆ドロップ：</strong></p>
     <p style="text-align: center; margin-bottom: 30px;">
-      <a id="bookmarklet" href="" class="bookmarklet-link">📝 文字数チェッカー</a>
+      <a id="bookmarklet" href="" class="bookmarklet-link">📏 横幅チェックくん</a>
     </p>
     <div class="note">
       <strong>💡 インストール方法：</strong><br>
       <strong>PC（Chrome/Edge）：</strong><br>
-      1. 上の「📝 文字数チェッカー」ボタンを<strong>ブックマークバー</strong>にドラッグ＆ドロップ<br>
+      1. 上の「📏 横幅チェックくん」ボタンを<strong>ブックマークバー</strong>にドラッグ＆ドロップ<br>
       2. 完了！<br><br>
       <strong>PC（Firefox）：</strong><br>
       1. ボタンを右クリック → 「リンクをブックマーク」<br><br>
@@ -121,17 +121,17 @@
 短いよ
     </div>
     <p style="margin-top: 15px; font-size: 14px; color: #666;">
-      ブックマークバーの「📝 文字数チェッカー」をクリック → 上のテキストを選択
+      ブックマークバーの「📏 横幅チェックくん」をクリック → 上のテキストを選択
     </p>
   </div>
 
   <div class="demo-section">
     <h2 style="color: #ff6b9d; margin-top: 0;">📖 使い方</h2>
     <ol style="line-height: 2;">
-      <li>ブックマークバーの「📝 文字数チェッカー」をクリック</li>
+      <li>ブックマークバーの「📏 横幅チェックくん」をクリック</li>
       <li>「起動しました！」とアラートが表示される</li>
       <li>任意のWebページでテキストを選択</li>
-      <li>各行の右横に文字数バッジが表示される</li>
+      <li><strong>各行の右横に文字数バッジが表示される</strong></li>
       <li>Escキーで解除</li>
     </ol>
   </div>
@@ -145,8 +145,8 @@
   </div>
 
   <script>
-    // ブックマークレットコードを生成
-    const bookmarkletCode = `javascript:(function(){if(window.xccBookmarklet){alert('既に起動しています！');return}window.xccBookmarklet=true;const style=document.createElement('style');style.textContent='.xcc-hl{position:absolute;border-radius:4px;opacity:0.4;pointer-events:none;z-index:9999}.xcc-hl.blue{background:linear-gradient(135deg,rgba(173,216,230,0.7),rgba(176,224,230,0.6))}.xcc-hl.yellow{background:linear-gradient(135deg,rgba(255,218,185,0.7),rgba(255,228,196,0.6))}.xcc-hl.red{background:linear-gradient(135deg,rgba(255,192,203,0.7),rgba(255,182,193,0.6))}.xcc-badge{position:absolute;padding:4px 10px;border-radius:12px;font:700 12px Comic Sans MS,Meiryo,sans-serif;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.15);pointer-events:none;z-index:10000}.xcc-badge.blue{background:linear-gradient(135deg,#add8e6,#b0e0e6);color:#2c5f7a;border:2px solid #87ceeb}.xcc-badge.yellow{background:linear-gradient(135deg,#ffdab9,#ffe4c4);color:#8b5a00;border:2px solid #ffb84d}.xcc-badge.red{background:linear-gradient(135deg,#ffc0cb,#ffb6c1);color:#8b3a62;border:2px solid #ff69b4}.xcc-tip{position:absolute;z-index:999999;background:linear-gradient(145deg,#fff,#fef9f3);border:2px solid #ffd4e5;border-radius:16px;padding:16px 18px;box-shadow:0 8px 24px rgba(255,182,193,0.25);font:14px Comic Sans MS,Meiryo,sans-serif;min-width:160px;pointer-events:none}.xcc-tip .total{font:700 16px/1.8 Comic Sans MS,Meiryo,sans-serif;color:#ff6b9d;text-align:center}';document.head.appendChild(style);let tip=null,els=[];const cc=t=>{let n=0;for(let c of t)n+=c.match(/[\\u0000-\\u007F]/)?0.5:1;return Math.ceil(n)},gc=n=>n<=15?'blue':n<=17?'yellow':'red',clr=()=>{els.forEach(e=>e?.remove());els=[];tip?.remove();tip=null},sel=()=>{const s=window.getSelection(),t=s.toString();if(!t?.trim())return clr();clr();const ls=t.split('\\n').filter(l=>l.trim()),stats=ls.map(l=>({c:cc(l.trim()),cl:gc(cc(l.trim()))})),tc=cc(t);let lr=null;if(s.rangeCount){const rg=s.getRangeAt(0),rcs=rg.getClientRects();if(rcs.length){const lrs=[];let cy=null,cg=[];Array.from(rcs).forEach(r=>{if(!r.width||!r.height)return;const y=Math.round(r.top);if(cy===null||Math.abs(y-cy)<5){cg.push(r);cy=y}else{cg.length&&lrs.push(cg);cg=[r];cy=y}});cg.length&&lrs.push(cg);lrs.forEach((rs,i)=>{const st=stats[Math.min(i,stats.length-1)],lr=rs[rs.length-1];rs.forEach(r=>{const h=document.createElement('div');h.className='xcc-hl '+st.cl;h.style.cssText='position:absolute;left:'+(r.left+scrollX)+'px;top:'+(r.top+scrollY)+'px;width:'+r.width+'px;height:'+r.height+'px';document.body.appendChild(h);els.push(h)});const b=document.createElement('div');b.className='xcc-badge '+st.cl;b.textContent=st.c+'文字';b.style.cssText='position:absolute;left:'+(lr.right+scrollX+8)+'px;top:'+(lr.top+scrollY)+'px';document.body.appendChild(b);els.push(b);lr={l:lr.right+scrollX+8,t:lr.top+scrollY,b:lr.bottom+scrollY}});if(lr){tip=document.createElement('div');tip.className='xcc-tip';tip.innerHTML='<div class="total">合計: '+tc+'文字 / 140</div>';document.body.appendChild(tip);tip.style.cssText='position:absolute;left:'+lr.l+'px;top:'+(lr.b+8)+'px'}}}};document.addEventListener('mouseup',()=>setTimeout(sel,10));document.addEventListener('mousedown',e=>tip&&!tip.contains(e.target)&&clr());document.addEventListener('keydown',e=>e.key==='Escape'&&clr());alert('X箇条書き文字数チェッカーを起動しました！\\nテキストを選択してください。')})();`;
+    // ブックマークレットコード（複数行対応版）
+    const bookmarkletCode = `javascript:(function(){if(window.xccBookmarklet){alert('既に起動しています！');return;}window.xccBookmarklet=true;const style=document.createElement('style');style.textContent='.xcc-hl{position:absolute;border-radius:4px;opacity:0.4;pointer-events:none;z-index:9999}.xcc-hl.blue{background:linear-gradient(135deg,rgba(173,216,230,0.7),rgba(176,224,230,0.6))}.xcc-hl.yellow{background:linear-gradient(135deg,rgba(255,218,185,0.7),rgba(255,228,196,0.6))}.xcc-hl.red{background:linear-gradient(135deg,rgba(255,192,203,0.7),rgba(255,182,193,0.6))}.xcc-badge{position:absolute;padding:4px 10px;border-radius:12px;font:700 12px Comic Sans MS,Meiryo,sans-serif;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.15);pointer-events:none;z-index:10000}.xcc-badge.blue{background:linear-gradient(135deg,#add8e6,#b0e0e6);color:#2c5f7a;border:2px solid #87ceeb}.xcc-badge.yellow{background:linear-gradient(135deg,#ffdab9,#ffe4c4);color:#8b5a00;border:2px solid #ffb84d}.xcc-badge.red{background:linear-gradient(135deg,#ffc0cb,#ffb6c1);color:#8b3a62;border:2px solid #ff69b4}.xcc-tip{position:absolute;z-index:999999;background:linear-gradient(145deg,#fff,#fef9f3);border:2px solid #ffd4e5;border-radius:16px;padding:16px 18px;box-shadow:0 8px 24px rgba(255,182,193,0.25);font:14px Comic Sans MS,Meiryo,sans-serif;min-width:160px;pointer-events:none}.xcc-tip .total{font:700 16px/1.8 Comic Sans MS,Meiryo,sans-serif;color:#ff6b9d;text-align:center}';document.head.appendChild(style);let tip=null,els=[];const cc=t=>{let n=0;for(let c of t)n+=c.match(/[\\u0000-\\u007F]/)?0.5:1;return Math.ceil(n)},gc=n=>n<=15?'blue':n<=17?'yellow':'red',clr=()=>{els.forEach(e=>e&&e.remove());els=[];if(tip){tip.remove();tip=null}},sel=()=>{const s=window.getSelection(),t=s.toString();if(!t||!t.trim()){clr();return}clr();const ls=t.split('\\n').filter(l=>l.trim()),stats=ls.map(l=>({c:cc(l.trim()),cl:gc(cc(l.trim()))})),tc=cc(t);let lastRect=null;if(s.rangeCount){const rg=s.getRangeAt(0),rcs=rg.getClientRects();if(rcs.length){const lrs=[];let cy=null,cg=[];Array.from(rcs).forEach(r=>{if(!r.width||!r.height)return;const y=Math.round(r.top);if(cy===null||Math.abs(y-cy)<5){cg.push(r);cy=y}else{if(cg.length)lrs.push(cg);cg=[r];cy=y}});if(cg.length)lrs.push(cg);lrs.forEach((rs,i)=>{const st=stats[Math.min(i,stats.length-1)];const lastRectInLine=rs[rs.length-1];rs.forEach(r=>{const h=document.createElement('div');h.className='xcc-hl '+st.cl;h.style.cssText='position:absolute;left:'+(r.left+scrollX)+'px;top:'+(r.top+scrollY)+'px;width:'+r.width+'px;height:'+r.height+'px';document.body.appendChild(h);els.push(h)});const b=document.createElement('div');b.className='xcc-badge '+st.cl;b.textContent=st.c+'文字';b.style.cssText='position:absolute;left:'+(lastRectInLine.right+scrollX+8)+'px;top:'+(lastRectInLine.top+scrollY)+'px';document.body.appendChild(b);els.push(b);lastRect={l:lastRectInLine.right+scrollX+8,t:lastRectInLine.top+scrollY,b:lastRectInLine.bottom+scrollY}});if(lastRect){tip=document.createElement('div');tip.className='xcc-tip';tip.innerHTML='<div class="total">合計: '+tc+'文字 / 140</div>';document.body.appendChild(tip);tip.style.cssText='position:absolute;left:'+lastRect.l+'px;top:'+(lastRect.b+8)+'px'}}}};document.addEventListener('mouseup',()=>setTimeout(sel,10));document.addEventListener('mousedown',e=>{if(tip&&!tip.contains(e.target))clr()});document.addEventListener('keydown',e=>{if(e.key==='Escape')clr()});alert('Xの横幅チェックくんを起動しました！\\nテキストを選択してください。')})();`;
 
     document.getElementById('bookmarklet').href = bookmarkletCode;
   </script>
